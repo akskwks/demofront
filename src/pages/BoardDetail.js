@@ -10,7 +10,6 @@ import "./Board.css";
 
 function BoardDetail() {
   const { boardId } = useParams();
-  console.log("현재 게시글 id : ", boardId);
   const navigate = useNavigate();
   const [board, setBoard] = useState(null);
   const [comments, setComments] = useState([]);
@@ -94,20 +93,22 @@ function BoardDetail() {
           <button type="submit">등록</button>
         </form>
 
-        <ul>
-          {comments.length === 0 ? (
-            <tr>
-              <td colSpan="4">댓글이 존재하지 않습니다.</td>
-            </tr>
-          ) : (
-            comments.map((c) => (
-              <tr key={c.commentId}>
-                <td> {c.writer} </td>
-                <td> {c.content} </td>
+        <table>
+          <tbody>
+            {comments.length === 0 ? (
+              <tr>
+                <td colSpan="4">댓글이 존재하지 않습니다.</td>
               </tr>
-            ))
-          )}
-        </ul>
+            ) : (
+              comments.map((c) => (
+                <tr key={c.commentId}>
+                  <td> {c.writer} </td>
+                  <td> {c.content} </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
