@@ -13,6 +13,8 @@ RUN npm install
 # 소스 코드를 복사합니다.
 COPY . .
 
+RUN npm run build
+
 # 앱을 빌드합니다.
 FROM nginx:alpine
 
