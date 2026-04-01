@@ -1,4 +1,4 @@
-const BASE_URL = "http://34.9.116.242/:8080/api/boards";
+const BASE_URL = "http://34.9.116.242:8080/api/boards";
 
 // 게시판 목록
 export const getBoards = async (page = 0, keyword = "") => {
