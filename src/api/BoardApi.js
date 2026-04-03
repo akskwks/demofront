@@ -2,7 +2,7 @@ const BASE_URL = "http://35.226.206.30:8080/api/boards";
 
 // 게시판 목록
 export const getBoards = async (page = 0, keyword = "") => {
-  let url = `http://35.226.206.30:8080/api/boards?page=${page}&size=10`;
+  let url = `${BASE_URL}?page=${page}&size=10`;
 
   if (keyword) {
     url += `&keyword=${keyword}`;
@@ -27,31 +27,26 @@ export const createBoard = async (data) => {
 
 // 게시글 상세 보기
 export const getBoardDetail = async (boardId) => {
-  const response = await fetch(
-    `http://35.226.206.30:8080/api/boards/${boardId}`,
-  );
+  const response = await fetch(`${BASE_URL}/${boardId}`);
   return response.json();
 };
 
 // 게시글 수정
 export const updateBoard = async (boardId, data) => {
-  const response = await fetch(
-    `http://35.226.206.30:8080/api/boards/${boardId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+  const response = await fetch(`${BASE_URL}/${boardId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
+    body: JSON.stringify(data),
+  });
 
   return response.json();
 };
 
 // 게시글 삭제
 export const deleteBoard = async (boardId) => {
-  await fetch(`http://35.226.206.30:8080/api/boards/${boardId}`, {
+  await fetch(`${BASE_URL}/${boardId}`, {
     method: "DELETE",
   });
 };
