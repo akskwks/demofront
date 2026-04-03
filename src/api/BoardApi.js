@@ -52,15 +52,13 @@ export const deleteBoard = async (boardId) => {
 };
 
 // 댓글 UI
-export const getComments = async (commentId) => {
-  const res = await fetch(
-    `http://35.226.206.30:8080/api/comments/${commentId}`,
-  );
+export const getComments = async (boardId) => {
+  const res = await fetch(`http://35.226.206.30:8080/api/comments/${boardId}`);
   return res.json();
 };
 
-export const createComment = async (commentId, data) => {
-  await fetch(`http://35.226.206.30:8080/api/comments/${commentId}`, {
+export const createComment = async (boardId, data) => {
+  await fetch(`http://35.226.206.30:8080/api/comments/${boardId}`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(data),
