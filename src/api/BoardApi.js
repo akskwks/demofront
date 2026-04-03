@@ -2,7 +2,7 @@ const BASE_URL = "http://35.226.206.30:8080/api/boards";
 
 // 게시판 목록
 export const getBoards = async (page = 0, keyword = "") => {
-  let url = `${BASE_URL}?page=${page}&size=10`;
+  let url = `http://35.226.206.30:8080/api/boards?page=${page}&size=10`;
 
   if (keyword) {
     url += `&keyword=${keyword}`;
